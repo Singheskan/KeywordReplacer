@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Keyword Replacer</title>
+    <link rel="stylesheet" href="popup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div id="container">
+        <h1>Keyword Replacer</h1>
+        
+        <!-- Dark Mode Toggle Button -->
+        <button id="toggle-dark-mode"><i class="fas fa-moon"></i> Dark Mode</button>
+        
+        <!-- General Keywords -->
+        <label for="general-keywords">General keywords (comma-separated):</label>
+        <textarea id="general-keywords" rows="3" cols="30"></textarea>
+        
+        <!-- Website-Specific Keywords -->
+        <h2>Website-Specific Keywords</h2>
+        <div id="website-keywords-container">
+            <div class="website-keyword-pair">
+                <input type="text" placeholder="Website URL" class="website">
+                <textarea placeholder="Keywords (comma-separated)" class="keywords" rows="2" cols="20"></textarea>
+                <button class="remove"><i class="fas fa-trash"></i></button>
+            </div>
+        </div>
+        <button id="add-website-keywords"><i class="fas fa-plus"></i> Add Another Website</button>
+        
+        <!-- Save Button -->
+        <button id="save"><i class="fas fa-save"></i> Save</button>
+
+        <!-- Ko-fi Support Button -->
+        <button id="support"><i class="fas fa-coffee"></i> Support Me on Ko-fi</button>
+        
+        <p id="status"></p>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>

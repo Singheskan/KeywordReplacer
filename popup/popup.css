@@ -1,0 +1,144 @@
+/* Light Mode (default) */
+body {
+    font-family: Arial, sans-serif;
+    width: 250px;
+    margin: 0;
+    padding: 10px;
+    background-color: white;
+    color: black;
+}
+
+h1, h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+textarea, input[type="text"] {
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: #f0f0f0;
+    color: black;
+    border: 1px solid #ccc;
+}
+
+button {
+    width: 100%;
+    padding: 5px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button i {
+    margin-right: 8px;
+}
+
+button.remove {
+    width: auto;
+    background-color: #f44336;
+    margin-top: -10px;
+    float: right;
+}
+
+button.remove:hover {
+    background-color: #d32f2f;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#status {
+    font-size: 12px;
+    color: green;
+    margin-top: 10px;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #2c2c2c;
+    color: white;
+}
+
+textarea.dark-mode, input[type="text"].dark-mode {
+    background-color: #3c3c3c;
+    color: white;
+    border: 1px solid #555;
+}
+
+button.dark-mode {
+    background-color: #666;
+    color: white;
+}
+
+button.dark-mode:hover {
+    background-color: #888;
+}
+
+button.remove.dark-mode {
+    background-color: #f44336;
+}
+
+button.remove.dark-mode:hover {
+    background-color: #d32f2f;
+}
+
+#status.dark-mode {
+    color: #76ff03;
+}
+
+/* popup.css */
+
+/* Existing styles... */
+
+/* Ko-fi Button Style */
+#support {
+    margin-top: 20px; /* Separate from other buttons */
+    background-color: #FF5F5F; /* Ko-fi color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    padding: 10px 15px; /* Padding */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer on hover */
+    transition: box-shadow 0.3s; /* Smooth shadow transition */
+}
+
+/* Rainbow Shine Animation */
+@keyframes rainbow-shine {
+    0% {
+        box-shadow: 0 0 5px red;
+    }
+    14% {
+        box-shadow: 0 0 5px orange;
+    }
+    28% {
+        box-shadow: 0 0 5px yellow;
+    }
+    42% {
+        box-shadow: 0 0 5px green;
+    }
+    57% {
+        box-shadow: 0 0 5px blue;
+    }
+    71% {
+        box-shadow: 0 0 5px indigo;
+    }
+    85% {
+        box-shadow: 0 0 5px violet;
+    }
+    100% {
+        box-shadow: 0 0 5px red;
+    }
+}
+
+.rainbow-shine {
+    animation: rainbow-shine 2s infinite; /* Run the animation */
+}
+
+
