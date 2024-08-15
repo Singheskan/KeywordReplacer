@@ -15,7 +15,11 @@
         <!-- General Keywords -->
         <label for="general-keywords">General keywords (comma-separated):</label>
         <textarea id="general-keywords" rows="3" cols="30"></textarea>
-        
+
+         <!-- Replacement Pairs -->
+         <label for="replacement-pairs">Replacement pairs (format: word:replaceword, word2:replaceword2):</label>
+         <textarea id="replacement-pairs" rows="3" cols="30"></textarea>
+         
         <!-- Website-Specific Keywords -->
         <h2>Website-Specific Keywords</h2>
         <div id="website-keywords-container">
@@ -26,9 +30,15 @@
             </div>
         </div>
         <button id="add-website-keywords"><i class="fas fa-plus"></i> Add Another Website</button>
-        
+
         <!-- Save Button -->
         <button id="save"><i class="fas fa-save"></i> Save</button>
+
+        <!-- TODO: Enable Automatic Replacement -->
+        <label>
+            <input type="checkbox" id="enable-automatic-replacement" unchecked>
+            Enable automatic replacement of names and emails
+        </label>
 
         <!-- Ko-fi Support Button -->
         <button id="support"><i class="fas fa-coffee"></i> Support Me on Ko-fi</button>

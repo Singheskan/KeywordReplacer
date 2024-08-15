@@ -1,8 +1,6 @@
-// popup.js
-
 document.addEventListener('DOMContentLoaded', () => {
     // Load saved preferences including dark mode
-    browser.storage.local.get(["darkMode", "generalKeywords", "websiteKeywords"]).then((result) => {
+    browser.storage.local.get(["darkMode", "generalKeywords", "websiteKeywords", "replacementPairs", "enableAutomaticReplacement"]).then((result) => {
         if (result.darkMode) {
             enableDarkMode();
         }
@@ -17,20 +15,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Add existing website keyword pairs
                 addWebsiteKeywordPair(pair.website, pair.keywords);
             });
-        } else {
-            // If no websiteKeywords are saved, add one empty pair
-            addWebsiteKeywordPair('', '');
+        }
+        if (result.replacementPairs) {
+            document.getElementById('replacement-pairs').value = result.replacementPairs;
+        }
+        if (result.enableAutomaticReplacement) {
+            document.getElementById('enable-automatic-replacement').checked = result.enableAutomaticReplacement;
         }
     });
 
     // Add the rainbow shine effect to the Ko-fi button
     const supportButton = document.getElementById('support');
     supportButton.classList.add('rainbow-shine');
-
     // Set a timeout to remove the rainbow animation after 2 seconds
     setTimeout(() => {
         supportButton.classList.remove('rainbow-shine');
-    }, 2500);
+    }, 2000);
 
     // Add event listener to the Dark Mode toggle button
     document.getElementById('toggle-dark-mode').addEventListener('click', () => {
@@ -40,6 +40,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add event listener to save button
     document.getElementById('save').addEventListener('click', () => {
         saveConfiguration();
+    });
+
+    // Add event listener to the checkbox
+    document.getElementById('enable-automatic-replacement').addEventListener('change', () => {
+        toggleAutomaticReplacement();
     });
 
     // Add event listener to add website button
@@ -95,15 +100,19 @@ function addWebsiteKeywordPair(website, keywords) {
 
 function saveConfiguration() {
     const generalKeywords = document.getElementById('general-keywords').value;
+    const replacementPairs = document.getElementById('replacement-pairs').value;
     const websiteKeywordPairs = Array.from(document.getElementsByClassName('website-keyword-pair')).map(pair => ({
         website: pair.querySelector('.website').value,
         keywords: pair.querySelector('.keywords').value,
     }));
+    const enableAutomaticReplacement = document.getElementById('enable-automatic-replacement').checked; // Use .checked for checkbox
 
     // Save the data to storage
     browser.storage.local.set({
         generalKeywords: generalKeywords,
-        websiteKeywords: websiteKeywordPairs
+        replacementPairs: replacementPairs,
+        websiteKeywords: websiteKeywordPairs,
+        enableAutomaticReplacement: enableAutomaticReplacement
     });
 
     // Display status
@@ -132,5 +141,27 @@ function enableDarkMode() {
     const elements = document.querySelectorAll('textarea, input[type="text"], button, #status');
     elements.forEach(element => {
         element.classList.add('dark-mode');
+    });
+}
+
+function toggleAutomaticReplacement() {
+    const checkbox = document.getElementById('enable-automatic-replacement');
+    const isAutomaticReplacement = checkbox.checked; // Use .checked for checkbox
+    const elements = document.querySelectorAll('textarea, input[type="text"], button, #status');
+
+    elements.forEach(element => {
+        element.classList.toggle('enable-automatic-replacement', isAutomaticReplacement);
+    });
+
+    // Save the automatic replacement preference
+    browser.storage.local.set({ enableAutomaticReplacement: isAutomaticReplacement });
+}
+
+function enableAutomaticReplacement() {
+    const checkbox = document.getElementById('enable-automatic-replacement');
+    checkbox.checked = true; // Ensure checkbox is checked
+    const elements = document.querySelectorAll('textarea, input[type="text"], button, #status');
+    elements.forEach(element => {
+        element.classList.add('enable-automatic-replacement');
     });
 }
