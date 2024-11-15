@@ -2,6 +2,9 @@
 
 The **Keyword Replacer** is a Firefox extension that allows users to replace specified keywords in text input fields with random words, ensuring anonymity by also replacing names and email addresses. This tool can be particularly useful for privacy-conscious users who want to obfuscate personal information while typing online.
 
+## Disclaimer
+ChatGPT introduced ShadowDOM elemnts which make it, in its current state, not possible to replace the files.
+
 ## Features
 
 - **Keyword Replacement**: Replace specific keywords with random words in text areas and input fields.
