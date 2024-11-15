@@ -43,9 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Add event listener to the checkbox
-    document.getElementById('enable-automatic-replacement').addEventListener('change', () => {
-        toggleAutomaticReplacement();
-    });
+    // document.getElementById('enable-automatic-replacement').addEventListener('change', () => {
+    //     toggleAutomaticReplacement();
+    // });
 
     // Add event listener to add website button
     document.getElementById('add-website-keywords').addEventListener('click', () => {
@@ -105,14 +105,16 @@ function saveConfiguration() {
         website: pair.querySelector('.website').value,
         keywords: pair.querySelector('.keywords').value,
     }));
-    const enableAutomaticReplacement = document.getElementById('enable-automatic-replacement').checked; // Use .checked for checkbox
+    //const enableAutomaticReplacement = document.getElementById('enable-automatic-replacement').checked; // Use .checked for checkbox 
 
+
+    console.log("burh")
     // Save the data to storage
     browser.storage.local.set({
         generalKeywords: generalKeywords,
         replacementPairs: replacementPairs,
         websiteKeywords: websiteKeywordPairs,
-        enableAutomaticReplacement: enableAutomaticReplacement
+        //enableAutomaticReplacement: enableAutomaticReplacement
     });
 
     // Display status
@@ -121,6 +123,7 @@ function saveConfiguration() {
     setTimeout(() => {
         status.textContent = '';
     }, 2000);
+    console.log("bruh")
 }
 
 function toggleDarkMode() {
